@@ -5,9 +5,12 @@
 
 language: java
 dist: bionic
+
 jdk:
   - openjdk14
 
+services:
+  docker
 
 # используем режим обычного пользователя для сборки проекта.
 sudo: false
@@ -16,6 +19,12 @@ sudo: false
 # Здесь используется сторонний сервис https://codecov.io/
 #after_success:
 #  - bash <(curl -s https://codecov.io/bash)
+
+deploy:
+  provider: script
+  script: bash deploy.sh
+  on:
+    branch: master
 
 # Отправлять уведомление на почту youremail@smtp.ru (Изменить на свою) если сборка упала
 notifications:
