@@ -6,41 +6,64 @@
 #### API ####
 **1. Регистрация сайта**
 
-`POST /registration`
-
-Запрос: `{"site": "НАИМЕНОВАНИЕ_САЙТА"}`
-
-Ответ: `{"registration" : true/false, "login": "УНИКАЛЬНЫЙ_КОД", "password" : "УНИКАЛЬНЫЙ_КОД"}`
+Запрос:
+```
+curl \
+--location \
+--request POST 'localhost/registration' \ 
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "site": "job4j.ru"
+}'
+```
+Ответ: 
+```
+{"registration" : true/false, "login": "УНИКАЛЬНЫЙ_КОД", "password" : "УНИКАЛЬНЫЙ_КОД"}
+```
 
 **2. Авторизация**
 
-`POST /login`
-
-Запрос: `{"site": "НАИМЕНОВАНИЕ_САЙТА", "password": "ПАРОЛЬ"}`
+Запрос:
+```
+curl \
+   --location --request POST 'localhost/login' \
+   --header 'Content-Type: application/json' \
+   --data-raw '{
+       "site": "НАИМЕНОВАНИЕ_САЙТА",
+       "password": "ПАРОЛЬ"
+   }'
+```
 
 Ответ: JWT token в заголовке Authorization 
 
 **3. Получить сокращенную ссылку**
 
-`POST /convert`
-
 Запрос:
-+ JWT token в заголовке Authorization
-+ `{url: "ДЛИННАЯ_ССЫЛКА"}`
-
+```
+curl --location --request POST 'localhost/convert' \
+--header 'Authorization: ВАШ_ТОКЕН' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "url": "https://kubernetes.io"
+}'
+```
 Ответ: `{"code": "УНИКАЛЬНЫЙ_КОД"}`
 
-**4. Переход по сокращенной ссылке**
+**4. Переход по сокращенной ссылке (лучше выполнять в браузере)**
 
-`GET /redirect/УНИКАЛЬНЫЙ_КОД`
+```
+localhost/redirect/УНИКАЛЬНЫЙ_КОД
+```
 
 Ответ: перенаправление на исходный URL
 
 **5. Статистика переходов для авторизованного сайта**
 
-`GET /statistic`
-
-Запрос: JWT token в заголовке Authorization
+Запрос:
+```
+curl --location --request GET 'http://localhost/statistic' \
+--header 'Authorization: ВАШ_ТОКЕН
+```
 
 Ответ: `[{"url" : "ДЛИННАЯ_ССЫЛКА1", "total" : КОЛИЧЕСТВО_ПЕРЕХОДОВ1}, ..., {"url" : "ДЛИННАЯ_ССЫЛКАN", "total" : КОЛИЧЕСТВО_ПЕРЕХОДОВN}]`
 

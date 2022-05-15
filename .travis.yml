@@ -4,7 +4,7 @@
 #    - CODECOV_TOKEN="47b6c95f-283e-4cfe-b7a6-c619bcc8539c"
 
 language: java
-dist: bionic
+dist: focal
 
 jdk:
   - openjdk14
@@ -12,17 +12,14 @@ jdk:
 services:
   docker
 
-# используем режим обычного пользователя для сборки проекта.
 sudo: false
 
-# после выполнения сборки запустить скрипт, который будет собирать статистику по JaCoCo
-# Здесь используется сторонний сервис https://codecov.io/
 #after_success:
 #  - bash <(curl -s https://codecov.io/bash)
 
 deploy:
   provider: script
-  script: bash deploy.sh
+  script: bash travis-deploy.sh
   on:
     branch: master
 
