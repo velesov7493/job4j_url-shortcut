@@ -69,10 +69,13 @@ curl --location --request GET 'http://localhost/statistic' \
 
 #### Технологии проекта ####
 ![badge](https://img.shields.io/badge/docker-20.10-random)
-![badge](https://img.shields.io/badge/docker/compose-2.5-green)
+![badge](https://img.shields.io/badge/docker/compose-2.5-indigo)
+![badge](https://img.shields.io/badge/kubernetes-1.24-lightgreen)
 ![badge](https://img.shields.io/badge/PostgreSQL-12-blue)
 ![badge](https://img.shields.io/badge/Java-14-green)
 ![badge](https://img.shields.io/badge/Maven-3.6-green)
 ![badge](https://img.shields.io/badge/SpringBot-2.6-yellow)
 #### Инструкция по развертыванию приложения в контейнерах ####
 [Развертывание приложения в контейнерах при помощи docker и docker compose](https://github.com/velesov7493/job4j_url-shortcut/wiki/Manual:-deploying-an-application-in-containers-using-docker-and-docker-compose)
+#### Инструкция по развертыванию приложения в kubernetes ####
+[Развертывание приложения в k8s minikube](https://github.com/velesov7493/job4j_url-shortcut/wiki/Manual:-deploying-an-application-in-kubernetes)
